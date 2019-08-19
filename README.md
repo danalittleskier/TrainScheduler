@@ -1,6 +1,6 @@
 # TrainScheduler
 
-* This app shows when the next train arrives by train name
+* Train schedule application that incorporates Firebase to host train arrival and departure data. This website provides up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
 ### Rules
 
@@ -18,4 +18,4 @@
 
   * The 'minutes away' column updates every minute
 
-  
+
