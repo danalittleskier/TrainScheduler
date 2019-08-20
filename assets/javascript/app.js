@@ -1,4 +1,4 @@
-
+// $('.toast').toast();
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyCurDyqz05LvewwxIugAMH0tFj7eTMyMFQ",
@@ -32,7 +32,16 @@ $("#add-train-btn").on("click", function (event) {
         frequency: trainFrequency
     };
 
+if(newTrain.name !== '' && newTrain.destination !== '' && newTrain.firsttrain !== '' && newTrain.frequency !== ''){
     database.ref('trains/').push(newTrain);
+
+    createRows();
+}
+else {
+    $("#myToast").show();
+    $('#myToast').toast('show');
+}
+   
 
     // Clears all of the text-boxes
     $("#train-name-input").val("");
@@ -40,12 +49,12 @@ $("#add-train-btn").on("click", function (event) {
     $("#first-train-input").val("");
     $("#frequency-input").val("");
 
-    createRows();
 });
 
 var displayInterval = setInterval(createRows, 60 * 1000);
 
 function createRows() {
+    $("#myToast").hide();
     $("#train-table > tbody").empty();
 
     database.ref('trains/').on("child_added", function (childSnapshot) {
